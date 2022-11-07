@@ -6,7 +6,19 @@ import {
   View,
   Modal,
   Image,
+  Alert,
 } from "react-native";
+
+const goAlert = () =>
+  Alert.alert(
+    // 말그대로 Alert를 띄운다
+    "제대로 입력해주세요.", // 첫번째 text: 타이틀 제목
+    "빈 문자열이 입력되었습니다.", // 두번째 text: 그 밑에 작은 제목
+    [
+      { text: "확인", onPress: () => console.log("이벤트 감지") }, //버튼 제목
+      // 이벤트 발생시 로그를 찍는다
+    ]
+  );
 
 const GoalInput = (props) => {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -20,7 +32,7 @@ const GoalInput = (props) => {
       props.onAddGoal(enteredGoalText);
       setEnteredGoalText("");
     } else {
-      alert("문자열을 입력해주세요.");
+      goAlert();
     }
   };
 
