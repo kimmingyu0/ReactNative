@@ -16,8 +16,12 @@ const GoalInput = (props) => {
   };
 
   const addGoalHandler = () => {
-    props.onAddGoal(enteredGoalText);
-    setEnteredGoalText("");
+    if (enteredGoalText.trim().length > 0) {
+      props.onAddGoal(enteredGoalText);
+      setEnteredGoalText("");
+    } else {
+      alert("문자열을 입력해주세요.");
+    }
   };
 
   return (
@@ -65,8 +69,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e4d0ff",
     backgroundColor: "#e4d0ff",
-    color:'#120438',
-    borderRadius:6,
+    color: "#120438",
+    borderRadius: 6,
     width: "100%",
     padding: 16,
   },
